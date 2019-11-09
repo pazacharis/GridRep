@@ -1,2 +1,2 @@
-# GR_DBSCAN
-Grid Representatives for DBSCAN
+# GridRep
+Grid Representatives for DBSCAN.
