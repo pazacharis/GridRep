@@ -2,7 +2,7 @@ import numpy as np
 from typing import NamedTuple
 
 
-class FeaturesTransformer():
+class FeaturesTransformer:
     def __init__(self, features, min_samples, round_decimals=None):
         self.round_decimals = round_decimals
         self.min_samples = min_samples
