@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+
 from dataclasses import dataclass, field
 
 
@@ -42,8 +44,6 @@ def scatter_from_mismatch(labels1, labels2,
     if excluded is None:
         excluded = []
 
-    import matplotlib.pyplot as plt
-
     opt = {'noClip': {'marker': 'D',
                       'facecolors': 'none',
                       'size': 70},
@@ -56,7 +56,7 @@ def scatter_from_mismatch(labels1, labels2,
         label1 = label[0]
         idx1 = label[1]
 
-        local_label = labels1.name + '_' + str(label1)
+        local_label = _create_label_id(labels1.name, label1)
         if local_label not in excluded:
             plotted.append(local_label)
             plt.scatter(X[idx1, 0], X[idx1, 1],
@@ -70,7 +70,7 @@ def scatter_from_mismatch(labels1, labels2,
         corresponding_labels = np.unique(label[2])
         for corr_label in corresponding_labels:
             idx2 = np.where(labels2.labels == corr_label)[0]
-            local_label = labels2.name + '_' + str(corr_label)
+            local_label = _create_label_id(labels2.name, corr_label)
             if local_label not in excluded:
                 plotted.append(local_label)
                 plt.scatter(X[idx2, 0], X[idx2, 1],
@@ -81,3 +81,7 @@ def scatter_from_mismatch(labels1, labels2,
                             edgecolors=np.random.rand(3, ),
                             s=100)
     return plotted
+
+
+def _create_label_id(name, label):
+    return name + '_' + str(label)
