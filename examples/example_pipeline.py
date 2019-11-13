@@ -2,6 +2,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
 from sklearn.datasets.samples_generator import make_blobs
 
+import sys
+sys.path.append("..")
+
 from gridrep.cluster import ClippedDBSCAN
 
 
@@ -20,3 +23,9 @@ def full_pipeline(X=None, radius=0.1, min_samples=3, round_decimals=1, scaler=St
                                                         round_decimals=round_decimals))
     labels_clip = pipeline_clip.fit_predict(X)
     return labels_clip
+
+
+if __name__ == "__main__":
+    
+    _ = full_pipeline()
+    print('Pipeline with ClippedDBSCAN completed.')
