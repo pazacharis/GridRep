@@ -10,7 +10,7 @@ The GridRep transformer generates a representative input subset based on DBSCAN'
 
 If the input data does not appear to be of low-cardinality, the GridRep transformer also allows to eliminate suspected false precision (e.g. lots of meaningless decimals after standardisation) by simply ppassing a _rounding_decimals_ parameter value.
 
-<img src="files/subsampling.png" width=400>
+<img src="subsampling.png" width=400>
 <!-- ![Representatives](files/subsampling.png) -->
 
 ## cluster.ClippedDBSCAN
