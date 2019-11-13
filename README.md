@@ -8,7 +8,7 @@ It is effective for large volumes of low-cardinality input data containing multi
 
 The GridRep transformer generates a representative input subset based on DBSCAN's _min_samples_ parameter that participates in the clustering procedure. The generated labels can then be re-mapped back to the original input data.
 
-For high-cardinality data, the GridRep transformer also allows to eliminate suspected false precision (e.g. lots of meaningless decimals after standardisation) by simply passing a _rounding_decimals_ parameter value.
+For data with high-cardinality, the GridRep transformer allows the mitigation of potential false precision (e.g. lots of meaningless decimals) by passing a _rounding_decimals_ parameter value.
 
 <img src="subsampling.png" width=400>
 <!-- ![Representatives](files/subsampling.png) -->
