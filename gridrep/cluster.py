@@ -1,15 +1,22 @@
 from sklearn.cluster import DBSCAN
 from sklearn.base import BaseEstimator, ClusterMixin
-
+from typing import Optional
 from gridrep.preprocess import FeaturesTransformer
 
 
 class ClippedDBSCAN(BaseEstimator, ClusterMixin):
-    def __init__(self, eps, min_samples, round_decimals=None, algorithm="ball_tree"):
+    """Perform DBSCAN clustering with 'just-enough' representative
+    feature transformation and label remapping.
+
+    Currently it wraps scikit-learn's DBSCAN.
+    """
+    def __init__(self,
+                 eps: float,
+                 min_samples: int,
+                 round_decimals: Optional[int] = None):
         self.round_decimals = round_decimals
         self.eps = eps
         self.min_samples = min_samples
-        self.algorithm = algorithm
 
         self.labels_ = None
 
@@ -31,5 +38,5 @@ class ClippedDBSCAN(BaseEstimator, ClusterMixin):
     def _fit(self, X, y=None):
         model = DBSCAN(eps=self.eps,
                        min_samples=self.min_samples,
-                       algorithm=self.algorithm).fit(X)
+                       algorithm="ball_tree").fit(X)
         return model
